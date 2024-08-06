@@ -1,6 +1,7 @@
 package com.example.gembot
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,26 +26,29 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun ChatPage(modifier: Modifier =Modifier){
+fun ChatPage(modifier: Modifier =Modifier,viewModel: ChatViewModel){
     Column(
         modifier=modifier
     ){
         AppHeader()
-        MessageInput()
+        MessageInput(onMessageSend = {
+            viewModel.sendMessage(it)
+        })
 
     }
 
 }
 
 @Composable
-fun MessageInput(){
+fun MessageInput(onMessageSend : (String)-> Unit){
     var message by remember{
         mutableStateOf("")
     }
 
     Row(
         modifier=Modifier.padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+
     ){
         OutlinedTextField(
             modifier=Modifier.weight(1f),
@@ -53,7 +57,11 @@ fun MessageInput(){
                 message=it
             } )
 
-        IconButton(onClick={}){
+        IconButton(onClick={
+            onMessageSend(message)
+            message=""
+        }){
+
             Icon(
                 imageVector= Icons.Default.Send,
                 contentDescription="send"

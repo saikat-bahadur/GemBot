@@ -8,16 +8,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModelProvider
 import com.example.gembot.ui.theme.GemBotTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val ChatViewModel = ViewModelProvider(this)[ChatViewModel::class.java]
         setContent {
             GemBotTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ChatPage(modifier =Modifier.padding(innerPadding))
+                    ChatPage(modifier =Modifier.padding(innerPadding),ChatViewModel)
 
 
                 }
@@ -25,4 +28,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
+
+
+
 
