@@ -1,5 +1,6 @@
 package com.example.gembot
 
+import android.telephony.TelephonyCallback.MessageWaitingIndicatorListener
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -7,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Icon
@@ -25,20 +28,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
+//Chat Page
 @Composable
 fun ChatPage(modifier: Modifier =Modifier,viewModel: ChatViewModel){
     Column(
         modifier=modifier
     ){
         AppHeader()
+        MessageList(messageList=viewModel.messageList)
         MessageInput(onMessageSend = {
             viewModel.sendMessage(it)
         })
 
     }
-
 }
 
+//Message List Or Model
+@Composable
+fun MessageList(modifier:Modifier=Modifier,messageList:List<MessageModel>){
+    LazyColumn {
+        items(messageList){
+            Text(text=it.message)
+        }
+    }
+}
+
+
+
+
+//Message Input -- Text Box And send Symbol
 @Composable
 fun MessageInput(onMessageSend : (String)-> Unit){
     var message by remember{
@@ -74,8 +93,7 @@ fun MessageInput(onMessageSend : (String)-> Unit){
 
 
 
-
-
+//Header
 @Composable
 fun AppHeader(){
     Box(modifier= Modifier
