@@ -59,6 +59,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,6 +70,29 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+    implementation ("com.google.code.gson:gson:2.8.8")
+    implementation ("io.noties.markwon:core:4.6.2")
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.30.0")
+    implementation ("androidx.navigation:navigation-compose:2.5.3" )
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.26.0-alpha")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
+    implementation ("androidx.compose.ui:ui:1.5.0")
+    implementation ("androidx.compose.material3:material3:1.1.0")
+    implementation ("androidx.compose.material:material:<latest-version>")
+    implementation ("androidx.compose.ui:ui:<latest-version>")
+    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+}
 
